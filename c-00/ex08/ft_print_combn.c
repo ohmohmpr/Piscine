@@ -44,21 +44,30 @@ void	ft_putnbr(int nb)
 
 void	ft_print_combn(int n)
 {
-	char	i[1];
+	int	max;
+	int	begin;
 
-	i[0] = '0';
+	begin = 0;
+	max = 1;
 	while (n > 0)
 	{
-		write(1, &i, 1);
-		i[0]++;
+		max = max * 10;
 		n--;
+	}
+	ft_putnbr(max);
+	while (begin <= max)
+	{
+		if (check_ascending_order(begin))
+		{
+			ft_putnbr(begin);
+			write(1, " ,", 1);
+		}
+		begin++;
 	}
 }
 
 int	main(void)
 {
-	ft_print_combn(2);
-	ft_putnbr(check_ascending_order(1000));
-	ft_putnbr(check_ascending_order(1234));
+	ft_print_combn(9);
 	return (0);
 }
