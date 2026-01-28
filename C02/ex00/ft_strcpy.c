@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <unistd.h>
-
 char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
@@ -13,13 +10,4 @@ char	*ft_strcpy(char *dest, char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-int	main(void)
-{
-	char	dest[100];
-
-	ft_strcpy(dest, "You should see this.");
-	printf("%s\n", dest);
-	return (0);
 }
