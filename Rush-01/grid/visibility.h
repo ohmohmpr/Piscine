@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grid.h                                             :+:      :+:    :+:   */
+/*   visibility.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: parattan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 13:51:36 by parattan          #+#    #+#             */
-/*   Updated: 2026/02/01 18:45:39 by parattan         ###   ########.fr       */
+/*   Created: 2026/02/01 19:29:44 by parattan          #+#    #+#             */
+/*   Updated: 2026/02/01 19:34:08 by parattan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef GRID_H
-# define GRID_H
 
-void	solve_grid(char *grid, int length_input);
-char	*init_grid(char *grid, int len, char *input);
-void	print_grid(char *grid, int len);
+#ifndef VISIBILITY_H
+# define VISIBILITY_H
+
+void	visibility_row(char *grid, int i, int side);
+void	visibility_col(char *grid, int i, int side);
+
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: parattan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 13:48:41 by parattan          #+#    #+#             */
+/*   Updated: 2026/02/01 17:44:27 by parattan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "../util/util.h"
 #include "draw.h"
 #include <stdio.h>
 
@@ -48,26 +60,25 @@ char	*filter_input(char *filtered_input, char *input)
 	return (filtered_input);
 }
 
-void	draw_outside(char *grid, int grid_size, char *input)
+void	draw_outside(char *grid, int g_s, char *input)
 {
 	int		i;
-	char	filtered_input[200];
+	int		inner_side;
+	char	f_input[200];
 
-	i = grid_size;
 	i = 0;
-
-	filter_input(filtered_input, input);
-	while (*grid)
+	inner_side = g_s - 2;
+	filter_input(f_input, input);
+	while (f_input[i] != '\0')
 	{
-		grid++;
-	}
-//	i = grid_size;
-	i = 0;
-	printf("PRINT INPUT\n");
-	while (filtered_input[i])
-	{
-		if (i / (grid_size - 2) == 0)
-			printf("%c", filtered_input[i]);
+		if (i / (g_s - 2) == 0)
+			grid[i + 1] = f_input[i];
+		if (i / (g_s - 2) == 1)
+			grid[g_s * (inner_side) + i + 3] = f_input[i];
+		if (i / (g_s - 2) == 2)
+			grid[(i % (inner_side) + 1) * g_s] = f_input[i];
+		if (i / (g_s - 2) == 3)
+			grid[(i % (inner_side) + 1) * g_s + g_s - 1] = f_input[i];
 		i++;
 	}
 }
