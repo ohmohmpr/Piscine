@@ -30,7 +30,7 @@ void	draw_corner(char *grid, int grid_size)
 	grid[grid_size * (grid_size - 1) + grid_size - 1] = '/';
 }
 
-char	*filter_input(char* filtered_input, char *input)
+char	*filter_input(char *filtered_input, char *input)
 {
 	int	i;
 
@@ -39,8 +39,8 @@ char	*filter_input(char* filtered_input, char *input)
 	{
 		if (*input != 32)
 		{
-			filtered_input[i] = input[i]; 
-			printf("%c ", input[i]);
+			filtered_input[i] = *input;
+			i++;
 		}
 		input++;
 	}
@@ -51,17 +51,23 @@ char	*filter_input(char* filtered_input, char *input)
 void	draw_outside(char *grid, int grid_size, char *input)
 {
 	int		i;
-	char	*filtered_input;
+	char	filtered_input[200];
+
+	i = grid_size;
+	i = 0;
 
 	filter_input(filtered_input, input);
 	while (*grid)
 	{
 		grid++;
 	}
-	i = grid_size;
-	while (*input)
+//	i = grid_size;
+	i = 0;
+	printf("PRINT INPUT\n");
+	while (filtered_input[i])
 	{
+		if (i / (grid_size - 2) == 0)
+			printf("%c", filtered_input[i]);
 		i++;
-		input = input + 1;
 	}
 }
