@@ -5,9 +5,8 @@ int	ft_strlen(char *str)
 	int	c;
 
 	c = 0;
-	while (*str)
+	while (str[c])
 	{
-		str++;
 		c++;
 	}
 	return (c);
@@ -16,4 +15,10 @@ int	ft_strlen(char *str)
 void	ft_putstr(char *str)
 {
 	write(1, str, ft_strlen(str));
+}
+
+int	main(void)
+{
+	ft_putstr("ABCDEFHIJ");
+	return (0);
 }
