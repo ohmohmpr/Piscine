@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 int	ft_selfcmp(char *base)
 {
 	int	i;
@@ -56,26 +59,49 @@ int	ft_get_base(char *str, char *base)
 	return (-1);
 }
 
+int	is_space_or_allow(char *str)
+{
+	int	allow;
+
+	allow = 0;
+	if (*str >= '\t' && *str <= '\r')
+		allow = 1;
+	if (*str == ' ')
+		allow = 1;
+	if (*str == '+')
+		allow = 1;
+	return (allow);
+}
+
 int	ft_atoi_base(char *str, char *base)
 {
 	int	sign;
 	int	value;
 	int	num_base;
 
-	num_base = ft_is_valid_base(base);
 	sign = 1;
 	value = 0;
+	num_base = ft_is_valid_base(base);
 	while (*str)
 	{
-		if (*str == '-')
+		if (value == 0 && *str == '-')
 			sign = -1 * sign;
+		else if (value == 0 && is_space_or_allow(str) == 1)
+			value = value;
 		else if (ft_get_base(str, base) != -1)
 			value = value * num_base + ft_get_base(str, base);
-		else if (value > 0 && *str == ' ')
-			return (sign * value);
-		else if ((*str < '0' || *str > '9') && *str != ' ' && *str != '+')
+		else
 			return (sign * value);
 		str++;
 	}
 	return (sign * value);
 }
+/*
+int     main(void)
+{
+        printf("%d\n", ft_atoi_base("   ---+--+1234ab567", "0123456789"));
+        printf("%d\n", ft_atoi_base("\r\t---+--+1234r\r567", "01"));
+        printf("%d\n", ft_atoi_base(" --+1234\r\t567", "0123456789ABCDEF"));
+        printf("%d\n", ft_atoi_base("   ---+--+1234  567", "poneyvif"));
+        return (0);
+}*/
