@@ -3,34 +3,45 @@
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
-	int	size;
-	int	i;
-	int	j;
-	int	test;
+	int	n;
+	int	res;
 
-	test = 0;
-	i = 0;
-	j = 0;
-	size = 0;
-	if (min >= max)
+	res = max - min;
+	n = 0;
+	if (res <= 0)
 	{
+		*range = NULL;
 		range = NULL;
 		return (0);
 	}
-	range = (int **)malloc(sizeof(int) * (max - min));
-	while (i < min * max)
+	*range = (int *)malloc(1 * sizeof(int *));
+	range[0] = malloc((res) * sizeof(int));
+	while (n < res)
 	{
-		printf("%d, %p\n", i,*range);
-		*range++;
-		i++;
+		range[0][n] = min + n;
+		n++;
 	}
-	return (min * max);
+	return (res);
 }
-
+/*
 int	main(void)
 {
-	int	**test;
+	int	*test;
+	int	min;
+	int	max;
+	int	n;
 
-	printf("%d\n", ft_ultimate_range(test, 4, 5));
+	n = 0;
+	min = -10;
+	max = -15;
+
+	printf("str %d\n", ft_ultimate_range(&test, min, max)); 
+	printf("ptr %p\n", test); 
+
+	while (n < max - min)
+	{
+		printf("idx: %d, %d \n", n, test[n]);
+		n++;
+	}
 	return (0);
-}
+}*/
