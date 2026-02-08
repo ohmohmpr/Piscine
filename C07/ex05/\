@@ -1,0 +1,78 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int	ft_strcmp(char *str, char *charset)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (charset[j])
+		{
+			if (str[i] == charset[j])
+				return (i);
+			j++;
+		}
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_strcut(char *str, char *res, char *charset)
+{
+	int		i;
+	int		shift_i;
+	int		sz;
+
+	i = 0;
+	shift_i = 0;
+	sz = 100;
+	/*
+	while (i < sz)
+	{
+		shift_i = ft_strcmp(&str[i + shift_i], charset);
+		printf("%d, %d\n", i, shift_i);
+		i++;
+	}*/
+	str = str + 2;
+	return (str);
+}
+
+char 	**ft_split(char *str, char *charset)
+{
+	int		i;
+	int		j;
+	int		i_s;
+	char	**res;
+
+	res = (char **)malloc(20 * sizeof(char *));
+	i = 0;
+	j = 0;
+	i_s = 0;
+	printf("ptr of res %p\n", res);
+	printf("ptr of res %ld\n", sizeof(*res));
+	while (i < 20)
+	{
+		res[i] = (char *)malloc(100 * sizeof(char));
+		str = ft_strcut(str, res[i], charset);
+		//printf("ptr: %p, %d\n", &res[i], *res[i]);
+		printf("%s\n", *str);
+		i++;
+	}
+	return (res);
+}
+
+int	main(void)
+{
+	//.str = ",,hello,world,,",
+	//.charset = ",",
+	char	**txt1;
+       
+	txt1 = ft_split(",,hello,world,,", ",");
+	printf("%s\n", *txt1);
+	return (0);
+}
