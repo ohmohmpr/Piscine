@@ -43,6 +43,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 			i = ft_strcmp(i, res, sep);
 		m++;
 	}
+	res[i] = '\0';
 	return (res);
 }
 /*
