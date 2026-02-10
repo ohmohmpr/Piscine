@@ -10,7 +10,7 @@ int	EVEN(int nbr)
 	else
 		return (0);
 }
-#define t_bool int
+#define	t_bool int
 #define FALSE 0
 #define TRUE 1
 #define EVEN_MSG "I have an even number of arguments."
